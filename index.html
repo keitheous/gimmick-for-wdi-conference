@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>div shuffling</title>
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.js"></script>
+</head>
+<body>
+  <div id="arena">
+
+      <div id="box-0" class="box">
+        <img id="the-img" src="box.png" alt="">
+      </div>
+
+      <div id="box-1" class="box">
+        <img id="img-box-fake" src="box.png" alt="">
+      </div>
+
+    <div id="box-2" class="box">
+      <img id="img-box-miss" src="box.png" alt="">
+    </div>
+
+    <!-- <button id="shuffle-btn">Shuffle</button> -->
+</div>
+</body>
+</html>
+
+<script>
+// var panda = 0;
+// var shit = 0;
+// scoreboard
+$(document).ready(function(){
+
+  function shuffle(e) {               // pass the divs to the function
+      var replace = $('<div>');
+      var size = e.size();
+
+      while (size >= 1) {
+         var rand = Math.floor(Math.random() * size);
+         var temp = e.get(rand);      // grab a random div from our set
+         replace.append(temp);        // add the selected div to our new set
+         e = e.not(temp); // remove our selected div from the main set
+         size--;
+      }
+      $('#arena').html(replace.html() );     // update our container div with the
+                                               // new, randomized divs
+  }
+
+  shuffle( $('#arena div') );
+
+  var found = function(){
+    console.log("found me!");
+    $('#the-img').attr("src","found_1.png");
+    setTimeout(function(){
+    $('#the-img').attr("src","found_2.png");},80);
+  };
+
+  var poo = function(){
+    console.log("found poo!");
+    $('#img-box-fake').attr("src","fail_1.png");
+    setTimeout(function(){
+    $('#img-box-fake').attr("src","fail_2.png");},100);
+    setTimeout(found(),400);
+    // this line not working like miss function
+  };
+
+
+  var miss = function(){
+    console.log("miss!");
+    $('#img-box-miss').attr("src","miss.png");
+    setTimeout(function(){
+    $('#img-box-miss').attr("src","box.png");},100);
+    setTimeout(found(),400);
+  };
+
+
+  $('#the-img').on('click', function(){
+    console.log("click!");
+    found();
+    // panda = panda+1;
+  });
+
+  $('#img-box-fake').on('click',function(){
+    console.log("click!")
+    setTimeout(poo(), 400);
+    // shit = shit + 1;
+
+  });
+
+  $('#img-box-miss').on('click',function(){
+    console.log("click!");
+    setTimeout(miss(), 400);
+
+
+  });
+
+
+
+});
+</script>
+
+<style>
+.box{
+  float: left;
+}
+.arena{
+  height:80%;
+  width: 75%;
+}
+img {
+  display: inline-block;
+  width: 275px;
+  height: 275px;
+  padding: 0;
+  margin: 7px 7px 7px 7px;
+}
+</style>
