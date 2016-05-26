@@ -1,11 +1,18 @@
 $( document ).ready(function() {
+
   console.log("Where's The Panda?");
   var cards = ['panda','poo','miss'];
   var panda = 0;
   var fail = 0;
   var miss = 0;
+  var gameFinished = false;
 
-
+  var disableClicks = function(){
+    $('.arena').css("pointer-events","none");
+  }
+  var enableClicks = function(){
+    $('.arena').css("pointer-events","auto");
+  }
 
   var displayScore = function(){
     console.log("panda score: ",panda);
@@ -16,25 +23,33 @@ $( document ).ready(function() {
   }
   displayScore();
 
+  var appendThree = function(img){
+    $('#1').children().attr('src',img);
+    $('#2').children().attr('src',img);
+    $('#3').children().attr('src',img);
+    if (gameFinished == false){
+      $(".box").removeClass("animated shake");
+      enableClicks();
+    } else {
+      disableClicks();
+    }
+  }
+
   var shuffle = function(){
     cards = _.shuffle(cards);
-    // console.log(cards);
+    console.log("shuffled!~")
+    console.log(cards);
+    // enableClicks();
+
   }
 
   var reset = function(){
-    $('#1').children().attr('src',"box.png");
-    $('#2').children().attr('src',"box.png");
-    $('#3').children().attr('src',"box.png");
     console.log("RESET");
     shuffle();
   }
 
   //wrte a shuffle function (DRY)
   $('#shuffleBtn').on('click', function(){
-    shuffle();
-  });
-
-  $('#resetBtn').on('click', function(){
     reset();
   });
 
@@ -44,50 +59,72 @@ $( document ).ready(function() {
     } else if (selection == 'poo'){
       return "fail_2.png"
     } else { //miss
-      return "miss_2.png"
+       return "miss_2.png"
     }
   }
 
   shuffle();
-  $('.box').on('click', function(event){
 
+  $('.arena').on('click', '.box', function(event){
+    disableClicks();
+    $(this).addClass("animated shake");
+    // $(this).closest('.arena').removeClass('active');
     var firstCard = cards[0];
     var secondCard = cards[1];
     var thirdCard = cards[2];
     console.log(firstCard);
-    imageSource = returnImage(firstCard);
-    $(event.target).attr('src',imageSource);
-      if (firstCard == "panda"){
-        panda = panda + 1;
-      } else if (firstCard == "poo"){
-        fail = fail + 1;
-      } else {
-        miss = miss + 1;
-      }
+
+
+    if (firstCard == "panda"){
+      panda = panda + 1;
+    } else if (firstCard == "poo"){
+      fail = fail + 1;
+    } else {
+      miss = miss + 1;
+    }
 
     // to target other id.children() - appending remaining images
     var clickedBox = $(this).attr('id');
-      if (clickedBox == "1"){
-        imageSource2 = returnImage(secondCard);
-        $('#2').children().attr('src',imageSource2);
-        imageSource3 = returnImage(thirdCard);
-        $('#3').children().attr('src',imageSource3);
-      } else if (clickedBox == "2"){
-        imageSource2 = returnImage(secondCard);
-        $('#3').children().attr('src',imageSource2);
-        imageSource3 = returnImage(thirdCard);
-        $('#1').children().attr('src',imageSource3);
-      } else if (clickedBox == "3") {
-        imageSource2 = returnImage(secondCard);
-        $('#2').children().attr('src',imageSource2);
-        imageSource3 = returnImage(thirdCard);
-        $('#1').children().attr('src',imageSource3);
-      } else {
+    console.log(clickedBox)
+    imageSource = returnImage(firstCard);
+    $('#' + clickedBox).children().attr('src',imageSource);
 
-      }
+    if (clickedBox == "1"){
+      imageSource2 = returnImage(secondCard);
+      $('#2').children().attr('src',imageSource2);
+      imageSource3 = returnImage(thirdCard);
+      $('#3').children().attr('src',imageSource3);
+    } else if (clickedBox == "2"){
+      imageSource2 = returnImage(secondCard);
+      $('#3').children().attr('src',imageSource2);
+      imageSource3 = returnImage(thirdCard);
+      $('#1').children().attr('src',imageSource3);
+    } else if (clickedBox == "3") {
+      imageSource2 = returnImage(secondCard);
+      $('#2').children().attr('src',imageSource2);
+      imageSource3 = returnImage(thirdCard);
+      $('#1').children().attr('src',imageSource3);
+    } else {
+
+    }
+    _.delay(appendThree, 1000, "box.png"); // async
 
     shuffle();
     displayScore();
   });
 
+
+  var countDown = function(sec) {
+
+    timer = setInterval(function() {
+     $('#display-timer').text(sec-- + " seconds to Lock Down");
+     if (sec === 0) {
+       clearInterval(timer);
+       $('#display-timer').text("Game Over");
+       gameFinished = true;
+     }
+    }, 1000);
+  }
+
+  countDown(10);
 });

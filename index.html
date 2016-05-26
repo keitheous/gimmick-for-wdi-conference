@@ -3,29 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link rel="stylesheet" href="animate.css">
+
+  <style>
+  .buttons{
+    display:block;
+  }
+  .box {
+    margin-left: 40px;
+    height: 200px;
+    width: 200px;
+    display: inline-block;
+  }
+  img {
+    height: 200px;
+    width: 200px;
+  }
+
+  .arena {
+    -webkit-user-select: none;
+  }
+  </style>
+
 </head>
 <body>
+  <h2 id="display-timer">Start!</h2>
   <div class="table">
     <div class="buttons">
       <button id="shuffleBtn">Shuffle Boxes</button>
-      <button id="resetBtn">New Round</button>
     </div>
-
-    <div class="box" id="1">
-      <img src="box.png">
-    </div>
-    <div class="box" id="2">
-      <img src="box.png">
-    </div>
-    <div class="box" id="3">
-      <img src="box.png">
+    <div class="arena">
+      <div class="box" id="1">
+        <img src="box.png">
+      </div>
+      <div class="box" id="2">
+        <img src="box.png">
+      </div>
+      <div class="box" id="3">
+        <img src="box.png">
+      </div>
     </div>
 
     <div class="score-board">
       <p>Panda Score : <span id="panda-score"></span></p>
       <p>Poo Score : <span id="poo-score"></span></p>
     </div>
-
 
   </div>
 
@@ -34,18 +56,3 @@
   <script src="app.js"></script>
 </body>
 </html>
-
-<style>
-.buttons{
-  display:block;
-}
-.box {
-  height: 200px;
-  width: 200px;
-  display: inline-block;
-}
-img {
-  height: 200px;
-  width: 200px;
-}
-</style>
