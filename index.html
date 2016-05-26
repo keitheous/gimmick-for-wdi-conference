@@ -6,8 +6,11 @@
   <link rel="stylesheet" href="animate.css">
 
   <style>
+
   .buttons{
+    position: absolute;
     display:block;
+    margin: auto;
   }
   .box {
     margin-left: 40px;
@@ -27,11 +30,10 @@
 
 </head>
 <body>
-  <h2 id="display-timer">Start!</h2>
+  <h1> Find The Panda! </h1>
+  <h3 id="display-timer">Start!</h3>
   <div class="table">
-    <div class="buttons">
-      <button id="shuffleBtn">Shuffle Boxes</button>
-    </div>
+
     <div class="arena">
       <div class="box" id="1">
         <img src="box.png">
@@ -44,9 +46,13 @@
       </div>
     </div>
 
+    <div class="buttons">
+      <button id="shuffleBtn">Shuffle Boxes</button>
+    </div>
+
     <div class="score-board">
-      <p>Panda Score : <span id="panda-score"></span></p>
-      <p>Poo Score : <span id="poo-score"></span></p>
+      <h2>Panda Score : <span id="panda-score"></span></h2>
+      <h2>Poo Score : <span id="poo-score"></span></h2>
     </div>
 
   </div>
