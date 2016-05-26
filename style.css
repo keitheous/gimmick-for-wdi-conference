@@ -1,0 +1,51 @@
+body {
+  margin:0 auto;
+}
+
+h2 {
+  margin-top:3em;
+  text-align:center;
+}
+
+.buttons{
+  display:block;
+  text-align:center;
+}
+
+#restartBtn {
+  padding:1em;
+  border:3px solid #2980b9;
+  border-radius:10px;
+  background-color: white;
+}
+
+.box {
+  margin-left: 40px;
+  height: 200px;
+  width: 200px;
+  display: inline-block;
+}
+img {
+  height: 200px;
+  width: 200px;
+}
+
+.arena {
+  -webkit-user-select: none;
+  width:100%;
+  text-align:center;
+  background-color:white;
+}
+
+.score-board {
+  padding:1em;
+  text-align:center;
+  width:50%;
+  margin:0 auto;
+  margin-top:2em;
+  background-color: #1abc9c;
+  border:3px solid #2980b9;
+  border-radius:10px;
+  color:white;
+  font-size:1.3em;
+}
