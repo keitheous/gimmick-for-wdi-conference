@@ -127,4 +127,11 @@ $( document ).ready(function() {
   }
 
   countDown(15);
+
+  $('#restartBtn').on('click', function(){
+    location.reload();
+  });
+
+
+
 });
