@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-  console.log("Where's The Panda?");
+  console.log("Guess where is the Panda?");
   var cards = ['panda','poo','miss'];
   var panda = 0;
   var fail = 0;
@@ -15,9 +15,9 @@ $( document ).ready(function() {
   }
 
   var displayScore = function(){
-    console.log("panda score: ",panda);
-    console.log("poo score: ",fail);
-    console.log("miss score: ",miss);
+    // console.log("panda score: ",panda);
+    // console.log("poo score: ",fail);
+    // console.log("miss score: ",miss);
     $( "#panda-score").text(panda);
     $( "#poo-score" ).text(fail);
   }
@@ -38,19 +38,19 @@ $( document ).ready(function() {
   var shuffle = function(){
     cards = _.shuffle(cards);
     console.log("shuffled!~")
-    console.log(cards);
+    // console.log(cards);
     // enableClicks();
 
   }
 
-  var reset = function(){
-    console.log("RESET");
-    shuffle();
-  }
+  // var reset = function(){
+  //   console.log("RESET");
+  //   shuffle();
+  // }
 
   //wrte a shuffle function (DRY)
   $('#shuffleBtn').on('click', function(){
-    reset();
+    shuffle();
   });
 
   var returnImage = function(selection){
@@ -72,7 +72,7 @@ $( document ).ready(function() {
     var firstCard = cards[0];
     var secondCard = cards[1];
     var thirdCard = cards[2];
-    console.log(firstCard);
+    // console.log(firstCard);
 
 
     if (firstCard == "panda"){
@@ -85,7 +85,7 @@ $( document ).ready(function() {
 
     // to target other id.children() - appending remaining images
     var clickedBox = $(this).attr('id');
-    console.log(clickedBox)
+    // console.log(clickedBox)
     imageSource = returnImage(firstCard);
     $('#' + clickedBox).children().attr('src',imageSource);
 
