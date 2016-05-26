@@ -2,8 +2,8 @@ body {
   margin:0 auto;
 }
 
-h2 {
-  margin-top:3em;
+h1,h3 {
+  margin-top:1.5em;
   text-align:center;
 }
 
