@@ -126,5 +126,5 @@ $( document ).ready(function() {
     }, 1000);
   }
 
-  countDown(10);
+  countDown(15);
 });
