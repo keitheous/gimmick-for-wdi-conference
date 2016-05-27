@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="animate.css">
   <link rel="stylesheet" href="style.css">
 
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.js"></script>
+  <script src="http://underscorejs.org/underscore.js"></script>
 </head>
 <body>
   <h1> Find The Panda! </h1>
@@ -28,28 +30,42 @@
       </div>
     </div>
 
-    <div class="board">
-      <div class="score-board">
+    <div class="score-board">
+
+
+
+      <div class="board">
         <p>Panda Score : <span id="panda-score"></span></p>
         <p>Poo Score : <span id="poo-score"></span></p>
       </div>
-      
-      <div class="instructions">
-
-
-      </div>
-
       <div class="form">
         <form action="">
           <label for="">Email: </label>
-          <input type="email" name="email">
+          <input type="email" name="email" id="emailInput">
           <button id="submit-btn">Submit Score</button>
         </form>
       </div>
+
+      <div class="submission">
+        <!-- <p> Thank you for your submission. <p> -->
+        <!-- <p> You will be reached through your email <span id="email-display" style="color:red;"></span> if you have won. </p> -->
+        <p><span id="email-display"></span></p>
+      </div>
+
+      <div class="instructions">
+        <ul>
+          <li>You have 15 seconds to find the Panda.</li>
+          <li>The box is shuffled at the beginning of each round.</li>
+          <li>Submit your higest score at the end of every game. Submission closes a month prior to the event</li>
+          <li>Player with the highest Panda and Poop score will be contacted by the organisers a month prior to the event.</li>
+          <li>Have fun finding the Panda!</li>
+
+        </ul>
+
+      </div>
+
     </div>
 
-  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.js"></script>
-  <script src="http://underscorejs.org/underscore.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

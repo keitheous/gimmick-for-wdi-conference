@@ -65,6 +65,37 @@ $( document ).ready(function() {
 
   shuffle();
 
+  var revertDisplay = function(){
+    $('.submission').hide()
+    $('.instructions').show()
+
+  }
+
+  // if ($('#emailInput').val() != ""){
+  //   console.log('j');
+  //   $('#submit-btn').addClass("clickable");
+  // }
+  // else{
+  //   $('#submit-btn').css("pointer-events","auto");
+  // }
+
+  $('#submit-btn').on('click', function(event) {
+    event.preventDefault();
+    if ($('#emailInput').val() === ""){
+        $('#email-display').html("Please enter a valid email.")
+      }
+    else{
+    var emailInput = $('#emailInput').val();
+    // console.log(emailInput);
+    // email-display
+    $('#email-display').html("Thank you for your submission. An email will be sent to " + emailInput);
+  }
+    $('.instructions').hide();
+    $('.submission').show();
+    _.delay(revertDisplay, 3500);
+
+  });
+
   $('.arena').on('click', '.box', function(event){
     disableClicks();
     $(this).addClass("animated shake");
