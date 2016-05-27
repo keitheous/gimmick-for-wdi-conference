@@ -88,7 +88,7 @@ $( document ).ready(function() {
     var emailInput = $('#emailInput').val();
     // console.log(emailInput);
     // email-display
-    $('#email-display').html("Thank you for your submission. An email will be sent to " + emailInput);
+    $('#email-display').html("Thank you for your submission. You will be contacted via your email at " + emailInput + " if you have won.");
   }
     $('.instructions').hide();
     $('.submission').show();
