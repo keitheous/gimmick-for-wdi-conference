@@ -1,5 +1,3 @@
-# gimmick-for-wdi-conference
-
 Gimmick For WDI Conference
 ==========================
 ** this game is not for children **
